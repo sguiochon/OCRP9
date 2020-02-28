@@ -53,8 +53,7 @@
         <!-- ===== Version properties ===== -->
         <log4j.version>2.8.1</log4j.version>
         <spring.version>4.3.7.RELEASE</spring.version>
-<!--        <sonar.jacoco.reportPaths>**/target/jacoco.exec</sonar.jacoco.reportPaths>-->
-<!--        <sonar.jacoco.reportPath>${project.basedir}**/target/jacoco.exec</sonar.jacoco.reportPath>-->
+        <aggregate.report.dir>module-jacoco-aggregate/target/site/jacoco-aggregate/jacoco.xml</aggregate.report.dir>
     </properties>
 
 
@@ -66,7 +65,7 @@
         <module>myerp-model</module>
         <module>myerp-consumer</module>
         <module>myerp-business</module>
-<!--        <module>module-jacoco-aggregate</module>-->
+        <module>module-jacoco-aggregate</module>
     </modules>
 
 
@@ -426,12 +425,12 @@
                                 <goal>prepare-agent</goal>
                             </goals>
                         </execution>
-                        <execution>
-                            <id>jacoco-report</id>
-                            <goals>
-                                <goal>report</goal>
-                            </goals>
-                        </execution>
+<!--                        <execution>-->
+<!--                            <id>jacoco-report</id>-->
+<!--                            <goals>-->
+<!--                                <goal>report</goal>-->
+<!--                            </goals>-->
+<!--                        </execution>-->
 <!--                        <execution>-->
 <!--                            <id>merge</id>-->
 <!--                            <goals>-->

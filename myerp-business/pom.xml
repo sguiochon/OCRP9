@@ -24,19 +24,23 @@
     <!-- =============================================================== -->
     <!-- Distrubution management -->
     <!-- =============================================================== -->
-<!--    <distributionManagement>-->
-<!--        <site>-->
-<!--            <id>site</id>-->
-<!--            <name>site-doc</name>-->
-<!--            <url>${basedir}/../myerp-business/target/site/</url>-->
-<!--        </site>-->
-<!--    </distributionManagement>-->
+    <!--    <distributionManagement>-->
+    <!--        <site>-->
+    <!--            <id>site</id>-->
+    <!--            <name>site-doc</name>-->
+    <!--            <url>${basedir}/../myerp-business/target/site/</url>-->
+    <!--        </site>-->
+    <!--    </distributionManagement>-->
 
 
     <!-- =============================================================== -->
     <!-- Properties -->
     <!-- =============================================================== -->
     <properties>
+
+        <sonar.coverage.jacoco.xmlReportPaths>${basedir}/../${aggregate.report.dir}
+        </sonar.coverage.jacoco.xmlReportPaths>
+
     </properties>
 
 
@@ -93,7 +97,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-<!--            <scope>test</scope>-->
+            <!--            <scope>test</scope>-->
         </dependency>
     </dependencies>
 
