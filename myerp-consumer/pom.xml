@@ -27,7 +27,7 @@
         <site>
             <id>site</id>
             <name>site-doc</name>
-            <url>file://${basedir}/../target/site-doc/${project.artifactId}/</url>
+            <url>${basedir}/../myerp-consumer/target/site/</url>
         </site>
     </distributionManagement>
 
@@ -74,7 +74,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <scope>test</scope>
+<!--            <scope>test</scope>-->
         </dependency>
     </dependencies>
 

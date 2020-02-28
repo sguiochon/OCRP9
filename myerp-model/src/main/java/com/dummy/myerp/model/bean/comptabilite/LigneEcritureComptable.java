@@ -1,6 +1,7 @@
 package com.dummy.myerp.model.bean.comptabilite;
 
 import com.dummy.myerp.model.validation.constraint.MontantComptable;
+import com.dummy.myerp.technical.exception.FunctionalException;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -35,10 +36,15 @@ public class LigneEcritureComptable {
 	 * @param pDebit           the debit
 	 * @param pCredit          the credit
 	 */
-	public LigneEcritureComptable(CompteComptable pCompteComptable, String pLibelle,
-	                              BigDecimal pDebit, BigDecimal pCredit) {
+	public LigneEcritureComptable(CompteComptable pCompteComptable, String pLibelle, BigDecimal pDebit, BigDecimal pCredit) throws FunctionalException {
 		compteComptable = pCompteComptable;
 		libelle = pLibelle;
+		if ((pDebit==null || pDebit.equals(BigDecimal.ZERO)) && (pCredit==null || pCredit.equals(BigDecimal.ZERO)))
+			throw new FunctionalException("[RG_Compta_3] Une ligne d'ecriture DOIT avoir un Crédit ou un Débit");
+
+		if (pDebit!=null && !BigDecimal.ZERO.equals(pDebit) && pCredit!=null && !BigDecimal.ZERO.equals(pCredit))
+			throw new FunctionalException("[RG_Compta_3] Une ligne d'ecriture DOIT avoir un Crédit ou un Débit");
+
 		debit = pDebit;
 		credit = pCredit;
 	}

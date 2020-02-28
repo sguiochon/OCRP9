@@ -24,7 +24,7 @@ public class EcritureComptable {
 	private Integer id;
 	@NotNull
 	private JournalComptable journal;
-	@Pattern(regexp = "\\d{1,5}-\\d{4}/\\d{5}")
+	@Pattern(regexp = "[a-zA-Z0-9]]{1,5}-\\d{4}/\\d{5}")
 	private String reference;
 	@NotNull
 	private Date date;
@@ -77,19 +77,18 @@ public class EcritureComptable {
 	}
 
 	/**
-	 * Calcul et renvoie le total des montants au débit des lignes d'écriture
+	 * Calcule et renvoie le total des montants au débit des lignes d'écriture
 	 *
 	 * @return {@link BigDecimal}, {@link BigDecimal#ZERO} si aucun montant au débit
 	 */
-	// TODO à tester
 	public BigDecimal getTotalDebit() {
-		BigDecimal vRetour = BigDecimal.ZERO;
+		BigDecimal totalDebit = BigDecimal.ZERO;
 		for (LigneEcritureComptable vLigneEcritureComptable : listLigneEcriture) {
 			if (vLigneEcritureComptable.getDebit() != null) {
-				vRetour = vRetour.add(vLigneEcritureComptable.getDebit());
+				totalDebit = totalDebit.add(vLigneEcritureComptable.getDebit());
 			}
 		}
-		return vRetour;
+		return totalDebit;
 	}
 
 	/**
@@ -98,13 +97,13 @@ public class EcritureComptable {
 	 * @return {@link BigDecimal}, {@link BigDecimal#ZERO} si aucun montant au crédit
 	 */
 	public BigDecimal getTotalCredit() {
-		BigDecimal vRetour = BigDecimal.ZERO;
+		BigDecimal totalCredit = BigDecimal.ZERO;
 		for (LigneEcritureComptable vLigneEcritureComptable : listLigneEcriture) {
-			if (vLigneEcritureComptable.getDebit() != null) {
-				vRetour = vRetour.add(vLigneEcritureComptable.getDebit());
+			if (vLigneEcritureComptable.getCredit() != null) {
+				totalCredit = totalCredit.add(vLigneEcritureComptable.getCredit());
 			}
 		}
-		return vRetour;
+		return totalCredit;
 	}
 
 	/**
@@ -113,8 +112,7 @@ public class EcritureComptable {
 	 * @return boolean
 	 */
 	public boolean isEquilibree() {
-		boolean vRetour = this.getTotalDebit().equals(getTotalCredit());
-		return vRetour;
+		return getTotalDebit().compareTo(getTotalCredit()) == 0;
 	}
 
 	@Override

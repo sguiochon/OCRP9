@@ -3,10 +3,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- =============================================================== -->
-    <!-- Project informations -->
-    <!-- =============================================================== -->
-    <!-- ===== Parent ===== -->
     <parent>
         <groupId>com.dummy.myerp</groupId>
         <artifactId>myerp</artifactId>
@@ -14,45 +10,29 @@
         <relativePath>..</relativePath>
     </parent>
 
-    <!-- ===== Maven ===== -->
     <artifactId>myerp-model</artifactId>
 
-    <!-- ===== General information ===== -->
     <name>${project.artifactId}</name>
 
+    <distributionManagement>
+        <site>
+            <id>site</id>
+            <name>site-doc</name>
+            <url>${basedir}/../myerp-model/target/site/</url>
+        </site>
+    </distributionManagement>
 
-    <!-- =============================================================== -->
-    <!-- Distrubution management -->
-    <!-- =============================================================== -->
-<!--    <distributionManagement>-->
-<!--        <site>-->
-<!--            <id>site</id>-->
-<!--            <name>site-doc</name>-->
-<!--            <url>file://${basedir}/../target/site-doc/${project.artifactId}/</url>-->
-<!--        </site>-->
-<!--    </distributionManagement>-->
-
-
-    <!-- =============================================================== -->
-    <!-- Properties -->
-    <!-- =============================================================== -->
     <properties>
     </properties>
 
-
-    <!-- =============================================================== -->
-    <!-- Dependencies -->
-    <!-- =============================================================== -->
     <dependencies>
-    <!-- ===== Modules ===== -->
+        <!-- ===== Modules ===== -->
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>myerp-technical</artifactId>
         </dependency>
 
-
         <!-- ========== Test Dependencies ========== -->
-        <!-- ===== Tests ===== -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -60,18 +40,14 @@
         </dependency>
 
         <!-- ===== JSR 303 - Bean validation ===== -->
-        <!-- implementation -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
-
-    <!-- =============================================================== -->
-    <!-- Build -->
-    <!-- =============================================================== -->
     <build>
     </build>
 </project>

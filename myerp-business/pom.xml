@@ -24,13 +24,13 @@
     <!-- =============================================================== -->
     <!-- Distrubution management -->
     <!-- =============================================================== -->
-    <distributionManagement>
-        <site>
-            <id>site</id>
-            <name>site-doc</name>
-            <url>file://${basedir}/../target/site-doc/${project.artifactId}/</url>
-        </site>
-    </distributionManagement>
+<!--    <distributionManagement>-->
+<!--        <site>-->
+<!--            <id>site</id>-->
+<!--            <name>site-doc</name>-->
+<!--            <url>${basedir}/../myerp-business/target/site/</url>-->
+<!--        </site>-->
+<!--    </distributionManagement>-->
 
 
     <!-- =============================================================== -->
@@ -61,6 +61,12 @@
             <artifactId>spring-tx</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+        </dependency>
+
+
         <!-- ===== JSR 303 - Bean validation ===== -->
         <!-- implementation -->
         <dependency>
@@ -87,7 +93,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <scope>test</scope>
+<!--            <scope>test</scope>-->
         </dependency>
     </dependencies>
 
@@ -138,5 +144,26 @@
     <!-- Build -->
     <!-- =============================================================== -->
     <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.5</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>jacoco-report</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
     </build>
 </project>
