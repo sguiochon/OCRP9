@@ -22,13 +22,13 @@
             </site>
         </distributionManagement>
 
-    <distributionManagement>
-        <site>
-            <id>site</id>
-            <name>site-doc</name>
-            <url>${basedir}/../myerp-model/target/site/</url>
-        </site>
-    </distributionManagement>
+<!--    <distributionManagement>-->
+<!--        <site>-->
+<!--            <id>site</id>-->
+<!--            <name>site-doc</name>-->
+<!--            <url>${basedir}/../myerp-model/target/site/</url>-->
+<!--        </site>-->
+<!--    </distributionManagement>-->
 
     <properties>
     </properties>
