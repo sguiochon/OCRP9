@@ -1,15 +1,14 @@
 language: java
-
+dist: trusty
 jdk:
   - openjdk8
 
 
 addons:
-      sonarcloud:
-        organization: "sguiochon"
-        token:
-          secure: "U7NG1tsy+MdbZDL0KUBds5eZhcZmubUuu8wpT6VLETC9aVGbu9kF1sTfe73oaYcQNuts65g/IIaeI/LjCcSTY5XS3UtHGMwT3ovGTbhw2zhDmEg33ak2H5IAIOPWMkb+UXdb9lahlEyWjyprihHz3qNYRgB2nSU+/rDt9CHBqyPkaFuYV1J3ecNVSHaQh9E7cPg/PFFVu+KzkSnLeyh50CXOUrVSRr3kqbi5CG8wK2dKr4kEvzGskwXcH20u3P/ag0ABv1DmKQeXD3qcZmlDa261gr9sK/5T+49vvMdsMAT21bh4fEwy/bmV9Zo+K60cCL4Kf69GDdzGhn6RZgJzx2PcngksiHl3NMZDNS+6r8pyKMyUAkmQUDFuGeMadnqHHSdAW9aIufVd0gTHSCR1o0bM1h+/m96XkZvHvtu8I7P6hs28mV0/nnmmfAGPuXUk3SX0nAJiNTW3jBYvX92n0LwHgdpI6zpHoeVyZPUg5oQ/qMpEqWMb6KgAf3d5rwYRrV1WPxw8q+oV4JZVPzp7G4XAf9GJ7l+xyVC4kNBbPjKwSX+7pI4BbKw6HM8+NS06e+0o86AKlEHlChX+yAHrwrQiO5gakHq7g4W+O+T7beYlLl8q5DRCjgEQF0Vv9CeGPX8cHFmYjlN+5g61HY6iAMRdErrK6CA+WlS9GVF1dC4="
-
+  sonarcloud:
+    organization: "sguiochon"
+    token:
+  secure: "RsU5C2VUc1lJOkhw9I5KmaaJ4VhWvWBy9dVY6+NzURSA00BwZsmeFjm62RbjDtJTdT015JwQyrSAELOcYrvmrhelzLnJj87BrNmbRagCPJ4Ps08kz6OBKe3Qx14jY181oM6KgH14xoFM2zPHAbth3t2XFeOaNRuX6QeiN/hdEDAikmLOoBlyaoJmBeS91ZUAOsGa7lKFswD2eAJuHEpi7NwT4EGC6I6GFXZhhSdqJaFDlBS8zRr1RjikmTNz/Z7uQ7S33Ua2dOM9HvEDwGD9ZkMm0rvbx4pbjY/XpCnmxOvNiO8EPKW4I478zNTfw3DmJwY1Kyaxf+CN5RGqMrGetOiZw+zQxfR66uwi5fIWWiU9bnw2UliQbPE7hzyvUtdm4Ha+ZcBKwU3BUonV4HbGZkXNAg13nCag5Mnh+Ul9RO+/Xwe7elZTTyaouosIHWQOm22spn8y6BeLLByulH/fRHaw17dXHnk00dghVJ87Vu1mJcBjRCC0TocDn2KUlMpHiNW8PqTayazvWkgVM2MFewNG1dFZExP4kT+DVYzUH1mIu2hte5Zd8BgC0prsm4LpXj1W9fpvDFqc9jU0CbbJm/X6cL9XK0zHrWummkP7JpwfkYEsYVpYqvBamdYEPxD6cpqlyQVzoSyqLnlWXzd8hBqBhVa/gRLbvNfg6p+IC7o="
 script:
-      # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
-      - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=sguiochon_OCRP9
+  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=sguiochon_OCRP9
