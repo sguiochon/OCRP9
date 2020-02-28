@@ -14,6 +14,14 @@
 
     <name>${project.artifactId}</name>
 
+        <distributionManagement>
+            <site>
+                <id>site</id>
+                <name>site-doc</name>
+                <url>file://${basedir}/../target/site-doc/${project.artifactId}/</url>
+            </site>
+        </distributionManagement>
+
     <distributionManagement>
         <site>
             <id>site</id>
