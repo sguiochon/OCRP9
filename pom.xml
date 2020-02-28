@@ -64,6 +64,7 @@
         <module>myerp-model</module>
         <module>myerp-consumer</module>
         <module>myerp-business</module>
+        <module>module-jacoco-aggregate</module>
     </modules>
 
 
