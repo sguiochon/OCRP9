@@ -48,7 +48,7 @@ public class LigneEcritureComptableTest {
 	}
 
 	@Test
-	public void testConstructionWhenFailsBecauseNoCreditNorDebit() throws FunctionalException {
+	public void testConstructionWhenFailsBecauseNoCreditNorDebit1() throws FunctionalException {
 		// Arrange
 		exceptionRule.expect(FunctionalException.class);
 		exceptionRule.expectMessage("[RG_Compta_3]");
@@ -58,6 +58,60 @@ public class LigneEcritureComptableTest {
 				new CompteComptable(20, "Compte Comptable 20"),
 				"Libellé",
 				BigDecimal.ZERO,
+				BigDecimal.ZERO
+		);
+
+		// Assert
+		// Exception is raised and catched by Junit and exception message as expected...
+	}
+
+	@Test
+	public void testConstructionWhenFailsBecauseNoCreditNorDebit2() throws FunctionalException {
+		// Arrange
+		exceptionRule.expect(FunctionalException.class);
+		exceptionRule.expectMessage("[RG_Compta_3]");
+
+		// Act
+		LigneEcritureComptable ligneEcritureComptable = new LigneEcritureComptable(
+				new CompteComptable(20, "Compte Comptable 20"),
+				"Libellé",
+				null,
+				null
+		);
+
+		// Assert
+		// Exception is raised and catched by Junit and exception message as expected...
+	}
+
+	@Test
+	public void testConstructionWhenFailsBecauseNoCreditNorDebit3() throws FunctionalException {
+		// Arrange
+		exceptionRule.expect(FunctionalException.class);
+		exceptionRule.expectMessage("[RG_Compta_3]");
+
+		// Act
+		LigneEcritureComptable ligneEcritureComptable = new LigneEcritureComptable(
+				new CompteComptable(20, "Compte Comptable 20"),
+				"Libellé",
+				BigDecimal.ZERO,
+				null
+		);
+
+		// Assert
+		// Exception is raised and catched by Junit and exception message as expected...
+	}
+
+	@Test
+	public void testConstructionWhenFailsBecauseNoCreditNorDebit4() throws FunctionalException {
+		// Arrange
+		exceptionRule.expect(FunctionalException.class);
+		exceptionRule.expectMessage("[RG_Compta_3]");
+
+		// Act
+		LigneEcritureComptable ligneEcritureComptable = new LigneEcritureComptable(
+				new CompteComptable(20, "Compte Comptable 20"),
+				"Libellé",
+				null,
 				BigDecimal.ZERO
 		);
 
