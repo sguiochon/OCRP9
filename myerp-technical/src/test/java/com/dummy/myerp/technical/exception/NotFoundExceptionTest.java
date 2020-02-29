@@ -45,4 +45,15 @@ public class NotFoundExceptionTest {
 		assertEquals("Test of field 'localizedMessage'","message", notFoundException.getLocalizedMessage());
 		assertEquals("Test of field 'message'", "message", notFoundException.getMessage());
 	}
+
+	@Test
+	public void testEmptyConstrutor() {
+		// Act
+		NotFoundException notFoundException = new NotFoundException();
+
+		// Assert
+		assertNull("Test 'cause' is not set", notFoundException.getCause());
+		assertNull("Test of field 'localizedMessage'", notFoundException.getLocalizedMessage());
+		assertNull("Test of field 'message'",  notFoundException.getMessage());
+	}
 }
