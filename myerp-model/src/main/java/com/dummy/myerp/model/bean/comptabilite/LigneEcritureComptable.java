@@ -42,7 +42,7 @@ public class LigneEcritureComptable {
 		if ((pDebit==null || pDebit.equals(BigDecimal.ZERO)) && (pCredit==null || pCredit.equals(BigDecimal.ZERO)))
 			throw new FunctionalException("[RG_Compta_3] Une ligne d'ecriture DOIT avoir un Crédit ou un Débit");
 
-		if (pDebit!=null && !BigDecimal.ZERO.equals(pDebit) && pCredit!=null && !BigDecimal.ZERO.equals(pCredit))
+		if ((pDebit!=null && !BigDecimal.ZERO.equals(pDebit)) && (pCredit!=null && !BigDecimal.ZERO.equals(pCredit)))
 			throw new FunctionalException("[RG_Compta_3] Une ligne d'ecriture DOIT avoir un Crédit ou un Débit");
 
 		debit = pDebit;
