@@ -43,6 +43,8 @@ public class JournalComptableTest {
 		journalComptable = new JournalComptable("FEH45", "journal numéro FEH45");
 		journalComptableList.add(journalComptable);
 
+		journalComptableList.add(null);
+
 		journalComptable = new JournalComptable("PDGH", "journal numéro PDGH");
 		journalComptableList.add(journalComptable);
 
@@ -66,6 +68,8 @@ public class JournalComptableTest {
 
 		journalComptable = new JournalComptable("PDGH", "journal numéro PDGH");
 		journalComptableList.add(journalComptable);
+
+		journalComptableList.add(null);
 
 		// Act
 		JournalComptable foundJournalComptable = JournalComptable.getByCode(journalComptableList, "AB");
