@@ -37,7 +37,7 @@ public class TechnicalExceptionTest {
 		// Arrange
 		String message = "message";
 		Throwable throwable = new Throwable("message of throwable");
-		
+
 		// Act
 		TechnicalException technicalException = new TechnicalException(message, throwable);
 

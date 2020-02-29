@@ -37,6 +37,7 @@
     <!-- Properties -->
     <!-- =============================================================== -->
     <properties>
+        <sonar.coverage.jacoco.xmlReportPaths>${basedir}/../${aggregate.report.dir}</sonar.coverage.jacoco.xmlReportPaths>
     </properties>
 
 
@@ -114,7 +115,7 @@
             <artifactId>hibernate-validator</artifactId>
             <scope>test</scope>
         </dependency>
-</dependencies>
+    </dependencies>
 
 
     <!-- =============================================================== -->
