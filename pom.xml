@@ -88,12 +88,12 @@
 
         <!-- Profile utilisé pour lancer les tests d'intégration de la couche Business -->
         <profile>
-            <id>test-business</id>
+            <id>IT-business</id>
         </profile>
 
         <!-- Profile utilisé pour lancer les tests d'intégration de la couche Consumer -->
         <profile>
-            <id>test-consumer</id>
+            <id>IT-consumer</id>
         </profile>
     </profiles>
 
