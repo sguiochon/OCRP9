@@ -63,7 +63,7 @@ public class ComptabiliteDaoImplIT {
 	@Test
 	@Sql(value={"classpath:delete-test-ecriturecomptable.sql", "classpath:create-test-ecriturecomptable.sql"})
 	@Sql(value="classpath:delete-test-ecriturecomptable.sql", executionPhase = AFTER_TEST_METHOD)
-	public void testGetEcritureComptableWhenExists() throws NotFoundException {
+	public void testGetEcritureComptableByReferenceWhenExists() throws NotFoundException {
 		// Act
 		final EcritureComptable test_reference = comptabiliteDaoImpl.getEcritureComptableByRef("test reference");
 
@@ -72,12 +72,35 @@ public class ComptabiliteDaoImplIT {
 	}
 
 	@Test
+	@Sql(value={"classpath:delete-test-ecriturecomptable.sql", "classpath:create-test-ecriturecomptable.sql"})
+	@Sql(value="classpath:delete-test-ecriturecomptable.sql", executionPhase = AFTER_TEST_METHOD)
+	public void testGetEcritureComptableByIdWhenExists() throws NotFoundException {
+		// Act
+		final EcritureComptable test_reference = comptabiliteDaoImpl.getEcritureComptable(Integer.valueOf(-1000));
+
+		// Assert
+		Assert.assertEquals("Lecture d'une écriture comptable (id)",Integer.valueOf(-1000), test_reference.getId());
+	}
+
+	@Test
 	@Sql(value="classpath:delete-test-ecriturecomptable.sql")
-	public void testGetEcritureComptableWhenNotExists() throws NotFoundException {
+	public void testGetEcritureComptableByReferenceWhenNotExists() throws NotFoundException {
 		// Act
 		raisedExcpetion.expect(NotFoundException.class);
 		raisedExcpetion.expectMessage("EcritureComptable non trouvée");
 		final EcritureComptable test_reference = comptabiliteDaoImpl.getEcritureComptableByRef("test reference");
+
+		// Assert
+		// An exception is raised
+	}
+
+	@Test
+	@Sql(value="classpath:delete-test-ecriturecomptable.sql")
+	public void testGetEcritureComptableByIdWhenNotExists() throws NotFoundException {
+		// Act
+		raisedExcpetion.expect(NotFoundException.class);
+		raisedExcpetion.expectMessage("EcritureComptable non trouvée");
+		final EcritureComptable test_reference = comptabiliteDaoImpl.getEcritureComptable(Integer.valueOf(-1000));
 
 		// Assert
 		// An exception is raised
