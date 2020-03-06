@@ -1,0 +1,1 @@
+delete from MYERP.ecriture_comptable WHERE reference='test reference';

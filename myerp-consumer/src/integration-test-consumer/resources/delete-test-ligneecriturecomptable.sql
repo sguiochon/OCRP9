@@ -1,0 +1,1 @@
+delete from MYERP.ligne_ecriture_comptable WHERE ecriture_id=-1000;
