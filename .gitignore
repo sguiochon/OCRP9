@@ -1,5 +1,11 @@
 /target
 /*-*/target
+/completesite
+/myerp-business/completesite
+/myerp-consumer/completesite
+/myerp-model/completesite
+/myerp-technical/completesite
+/module-jacoco-aggregate/completesite
 
 /.settings
 /.project

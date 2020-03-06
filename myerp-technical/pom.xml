@@ -24,13 +24,13 @@
     <!-- =============================================================== -->
     <!-- Distrubution management -->
     <!-- =============================================================== -->
-    <distributionManagement>
-        <site>
-            <id>site</id>
-            <name>site-doc</name>
-            <url>${basedir}/../myerp-technical/target/site/</url>
-        </site>
-    </distributionManagement>
+<!--    <distributionManagement>-->
+<!--        <site>-->
+<!--            <id>site</id>-->
+<!--            <name>site-doc</name>-->
+<!--            <url>${basedir}/../myerp-technical/target/site/</url>-->
+<!--        </site>-->
+<!--    </distributionManagement>-->
 
 
     <!-- =============================================================== -->
@@ -47,24 +47,10 @@
     <dependencies>
         <!-- ===== Log4j ===== -->
         <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.30</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-        </dependency>
-        <!-- Commons Logging Bridge -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-jcl</artifactId>
-        </dependency>
-        <!-- Log4j 2 SLF4J Binding -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j-impl</artifactId>
-        </dependency>
-
 
         <!-- ===== Apache commons ===== -->
         <dependency>

@@ -23,13 +23,13 @@
     <!-- =============================================================== -->
     <!-- Distrubution management -->
     <!-- =============================================================== -->
-    <distributionManagement>
-        <site>
-            <id>site</id>
-            <name>site-doc</name>
-            <url>${basedir}/../myerp-consumer/target/site/</url>
-        </site>
-    </distributionManagement>
+<!--    <distributionManagement>-->
+<!--        <site>-->
+<!--            <id>site</id>-->
+<!--            <name>site-doc</name>-->
+<!--            <url>${basedir}/../myerp-consumer/target/site/</url>-->
+<!--        </site>-->
+<!--    </distributionManagement>-->
 
 
     <!-- =============================================================== -->
@@ -56,12 +56,39 @@
             <artifactId>spring-jdbc</artifactId>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.30</version>
+        </dependency>
+
 
         <!-- ========== Test Dependencies ========== -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>2.25.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-module-junit4</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+            <version>1.4.199</version>
         </dependency>
 
         <!-- ===== Database (pour les tests) ===== -->
@@ -77,6 +104,10 @@
             <artifactId>postgresql</artifactId>
 <!--            <scope>test</scope>-->
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+        </dependency>
     </dependencies>
 
 
@@ -86,7 +117,7 @@
     <profiles>
         <!-- Profile utilisé pour lancer les tests d'intégration de la couche Consumer -->
         <profile>
-            <id>test-consumer</id>
+            <id>integration-test-consumer</id>
             <build>
                 <plugins>
                     <!-- Ajout du répertoire src/test-consumer/java en tant que source de test du module -->
@@ -102,19 +133,30 @@
                                 </goals>
                                 <configuration>
                                     <sources>
-                                        <source>src/test-consumer/java</source>
+                                        <source>src/integration-test-consumer/java</source>
                                     </sources>
                                 </configuration>
                             </execution>
                         </executions>
                     </plugin>
+
+                    <plugin>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.22.0</version>
+                        <configuration>
+                            <includes>
+                                <include>**/*IT</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+
                 </plugins>
                 <testResources>
                     <testResource>
                         <directory>src/test/resources</directory>
                     </testResource>
                     <testResource>
-                        <directory>src/IT-consumer/resources</directory>
+                        <directory>src/integration-test-consumer/resources</directory>
                     </testResource>
                 </testResources>
             </build>
