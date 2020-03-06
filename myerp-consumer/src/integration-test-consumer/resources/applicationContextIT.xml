@@ -56,7 +56,7 @@
         <property name="driverClassName" value="org.postgresql.Driver"/>
         <property name="url" value="jdbc:postgresql://127.0.0.1:5432/postgres"/>
         <property name="username" value="postgres"/>
-        <property name="password" value="Antimoine67!"/>
+        <property name="password" value=""/>
     </bean>
 
     <!-- ========== SQL ========== -->
