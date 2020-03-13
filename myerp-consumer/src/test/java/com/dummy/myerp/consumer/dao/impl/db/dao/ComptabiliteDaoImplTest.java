@@ -2,6 +2,7 @@ package com.dummy.myerp.consumer.dao.impl.db.dao;
 
 import com.dummy.myerp.consumer.db.DataSourcesEnum;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -41,6 +42,7 @@ public class ComptabiliteDaoImplTest {
 	}
 
 	@Test
+	@Ignore
 	public void testConfigurationOfDataSourcesWhenValidDataSourceProvided() {
 		// Arrange
 		EnumMap<DataSourcesEnum, DataSource> configDataSourceMap = new EnumMap<>(DataSourcesEnum.class);

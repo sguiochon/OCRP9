@@ -17,7 +17,6 @@ public class CompteComptableRM implements RowMapper<CompteComptable> {
         CompteComptable vBean = new CompteComptable();
         vBean.setNumero(pRS.getInt("numero"));
         vBean.setLibelle(pRS.getString("libelle"));
-
         return vBean;
     }
 }
