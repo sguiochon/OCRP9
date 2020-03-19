@@ -8,7 +8,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 
-public abstract class ResultSetHelper {
+public interface ResultSetHelper {
 
 	/**
 	 * Renvoie la valeur de la colonne pColName dans un <code>Integer</code>.
@@ -20,7 +20,6 @@ public abstract class ResultSetHelper {
 	 * @throws SQLException sur erreur SQL
 	 */
 	public static Integer getInteger(ResultSet pRS, String pColName) throws SQLException {
-		Integer vRetour = null;
 		int vInt = pRS.getInt(pColName);
 		if (!pRS.wasNull()) {
 			return vInt;
@@ -39,7 +38,6 @@ public abstract class ResultSetHelper {
 	 * @throws SQLException sur erreur SQL
 	 */
 	public static Long getLong(ResultSet pRS, String pColName) throws SQLException {
-		Long vRetour = null;
 		Long vLong = pRS.getLong(pColName);
 		if (!pRS.wasNull()) {
 			return vLong;
