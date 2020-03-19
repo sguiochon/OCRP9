@@ -43,14 +43,6 @@
 
 
     <!-- ==================== Databases ==================== -->
-<!--    <bean id="dataSourceH2" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
-<!--        <constructor-arg value="javax.sql.DataSource"/>-->
-<!--        <property name="driverClassName" value="org.h2.Driver"/>-->
-<!--        <property name="url" value="jdbc:h2:mem:testdb"/>-->
-<!--        <property name="username" value="sa"/>-->
-<!--        <property name="password" value="password"/>-->
-<!--    </bean>-->
-
     <bean id="dataSourceMYERP" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <constructor-arg value="javax.sql.DataSource"/>
         <property name="driverClassName" value="org.postgresql.Driver"/>
@@ -59,6 +51,14 @@
         <property name="password" value=""/>
     </bean>
 
-    <!-- ========== SQL ========== -->
+<!--    <bean id="dataSourceMYERP" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+<!--        <constructor-arg value="javax.sql.DataSource"/>-->
+<!--        <property name="driverClassName" value="org.postgresql.Driver"/>-->
+<!--        <property name="url" value="jdbc:postgresql://127.0.0.1:5432/postgres"/>-->
+<!--        <property name="username" value="postgres"/>-->
+<!--        <property name="password" value="XxxxxxxxYY!"/>-->
+<!--    </bean>-->
+
+    <!-- ========== SQL statements ========== -->
     <import resource="sqlContext.xml"/>
 </beans>

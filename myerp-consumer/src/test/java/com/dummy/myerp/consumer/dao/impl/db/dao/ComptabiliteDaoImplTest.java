@@ -1,64 +1,82 @@
 package com.dummy.myerp.consumer.dao.impl.db.dao;
 
+import com.dummy.myerp.consumer.db.AbstractDbConsumer;
 import com.dummy.myerp.consumer.db.DataSourcesEnum;
+import org.apache.logging.log4j.core.LogEvent;
+import org.apache.logging.log4j.core.appender.AbstractAppender;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.mockito.Spy;
+import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PowerMockIgnore;
+import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
-import org.springframework.test.util.ReflectionTestUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.sql.DataSource;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.SQLFeatureNotSupportedException;
+import java.util.ArrayList;
 import java.util.EnumMap;
-import java.util.logging.Logger;
+import java.util.List;
 
-import static org.powermock.configuration.ConfigurationType.PowerMock;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.verify;
+import static org.mockito.internal.verification.VerificationModeFactory.times;
+import static org.powermock.api.mockito.PowerMockito.when;
 
 @RunWith(PowerMockRunner.class)
-@PowerMockIgnore({"javax.management.*","com.sun.*",  "javax.xml.*", "org.xml.sax.*", "org.w3c.*" }) // If not set, JAXB unmarshalling will not work!
+@PowerMockIgnore({"javax.management.*", "com.sun.*", "javax.xml.*", "org.xml.sax.*", "org.w3c.*", "javax.script.*", "org.slf4j.*"})
+@PrepareForTest({LoggerFactory.class, AbstractDbConsumer.class})
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ComptabiliteDaoImplTest {
 
 	@Mock
-	Logger mockLogger;
-
-	@Spy
-	ComptabiliteDaoImpl comptabiliteDaoImpl;
+	Logger loggerMock;
 
 	@Before
 	public void setUp(){
-		MockitoAnnotations.initMocks(this);
-		String someName = "Some Name";
-//		ReflectionTestUtils.setField(comptabiliteDaoImpl, // inject into this object
-//				"LOGGER", // assign to this field
-//				mockLogger); // object to be injected
+		PowerMockito.mockStatic(LoggerFactory.class);
+		loggerMock = PowerMockito.mock(Logger.class);
+		when(LoggerFactory.getLogger(any(Class.class))).thenReturn(loggerMock);
 	}
 
 	@Test
-	@Ignore
-	public void testConfigurationOfDataSourcesWhenValidDataSourceProvided() {
+	public void testBConfigurationOfDataSourcesWhenNoDataSourceProvided() {
+		// Arrange
+		EnumMap<DataSourcesEnum, DataSource> configDataSourceMap = new EnumMap<>(DataSourcesEnum.class);
+		configDataSourceMap.put(DataSourcesEnum.MYERP, null);
+
+		// Act
+		AbstractDbConsumer.configure(configDataSourceMap);
+
+		// Assert
+		verify(loggerMock, times(1)).error(anyString(), (Object) any());
+	}
+
+	@Test
+	public void testAConfigurationOfDataSourcesWhenValidDataSourceProvided() {
 		// Arrange
 		EnumMap<DataSourcesEnum, DataSource> configDataSourceMap = new EnumMap<>(DataSourcesEnum.class);
 		configDataSourceMap.put(DataSourcesEnum.MYERP, buildFakeDataSource());
 
-
 		// Act
-		comptabiliteDaoImpl.configure(configDataSourceMap);
+		AbstractDbConsumer.configure(configDataSourceMap);
 
 		// Assert
-		//ComptabiliteDaoImpl.getInstance().g
-
+		verify(loggerMock, times(0)).error(anyString(), (Object) any());
 	}
 
 	private DataSource buildFakeDataSource() {
-		return new DataSource() {
+		return new  DataSource() {
 			@Override
 			public <T> T unwrap(Class<T> iface) throws SQLException {
 				return null;
@@ -95,15 +113,14 @@ public class ComptabiliteDaoImplTest {
 			}
 
 			@Override
-			public void setLoginTimeout(int seconds) throws SQLException {
-
+			public java.util.logging.Logger getParentLogger() throws SQLFeatureNotSupportedException {
+				return null;
 			}
 
 			@Override
-			public Logger getParentLogger() throws SQLFeatureNotSupportedException {
-				return null;
+			public void setLoginTimeout(int seconds) throws SQLException {
+
 			}
 		};
 	}
-
 }

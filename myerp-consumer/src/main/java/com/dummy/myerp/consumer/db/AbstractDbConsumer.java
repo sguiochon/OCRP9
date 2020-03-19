@@ -42,7 +42,7 @@ public abstract class AbstractDbConsumer {
 			// (NB : elle est considérée comme non configurée si elle est dans pEnumMapDataSource mais à null)
 			if (vDataSource == null) {
 				if (pEnumMapDataSource.containsKey(dataSourceId)) {
-					LOGGER.error("La DataSource {} n'a pas été initialisée. Elle est ignorée.", dataSourceId);
+					LOGGER.error("La DataSource {} n'a pas été configurée. Elle est ignorée.", dataSourceId);
 				} else {
 					LOGGER.warn("La DataSource {} n'est pas trouvée dans la liste.", dataSourceId);
 				}
