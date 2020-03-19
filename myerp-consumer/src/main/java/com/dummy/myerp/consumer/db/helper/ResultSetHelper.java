@@ -10,10 +10,6 @@ import java.util.Date;
 
 public abstract class ResultSetHelper {
 
-	protected ResultSetHelper() {
-		super();
-	}
-
 	/**
 	 * Renvoie la valeur de la colonne pColName dans un <code>Integer</code>.
 	 * Si la colonne vaut <code>null</code>, la méthode renvoie <code>null</code>
