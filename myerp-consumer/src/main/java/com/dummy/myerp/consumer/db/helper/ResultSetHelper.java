@@ -8,7 +8,9 @@ import java.util.Calendar;
 import java.util.Date;
 
 
-public interface ResultSetHelper {
+public abstract class ResultSetHelper {
+
+	private ResultSetHelper(){}
 
 	/**
 	 * Renvoie la valeur de la colonne pColName dans un <code>Integer</code>.

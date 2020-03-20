@@ -3,10 +3,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- =============================================================== -->
-    <!-- Project informations -->
-    <!-- =============================================================== -->
-    <!-- ===== Parent ===== -->
     <parent>
         <groupId>com.dummy.myerp</groupId>
         <artifactId>myerp</artifactId>
@@ -14,36 +10,14 @@
         <relativePath>..</relativePath>
     </parent>
 
-    <!-- ===== Maven ===== -->
     <artifactId>myerp-technical</artifactId>
 
-    <!-- ===== General information ===== -->
     <name>${project.artifactId}</name>
 
-
-    <!-- =============================================================== -->
-    <!-- Distrubution management -->
-    <!-- =============================================================== -->
-<!--    <distributionManagement>-->
-<!--        <site>-->
-<!--            <id>site</id>-->
-<!--            <name>site-doc</name>-->
-<!--            <url>${basedir}/../myerp-technical/target/site/</url>-->
-<!--        </site>-->
-<!--    </distributionManagement>-->
-
-
-    <!-- =============================================================== -->
-    <!-- Properties -->
-    <!-- =============================================================== -->
     <properties>
         <sonar.coverage.jacoco.xmlReportPaths>${basedir}/../${aggregate.report.dir}</sonar.coverage.jacoco.xmlReportPaths>
     </properties>
 
-
-    <!-- =============================================================== -->
-    <!-- Dependencies -->
-    <!-- =============================================================== -->
     <dependencies>
         <!-- ===== Log4j ===== -->
         <dependency>
@@ -51,7 +25,6 @@
             <artifactId>slf4j-api</artifactId>
             <version>1.7.30</version>
         </dependency>
-
         <!-- ===== Apache commons ===== -->
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -61,8 +34,6 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
         </dependency>
-
-
         <!-- ===== Spring IOC ===== -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -76,16 +47,12 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
         </dependency>
-
-
         <!-- ===== JSR 303 - Bean validation ===== -->
         <!-- interface -->
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
         </dependency>
-
-
         <!-- ========== Test Dependencies ========== -->
         <!-- ===== Tests ===== -->
         <dependency>
@@ -103,10 +70,13 @@
         </dependency>
     </dependencies>
 
-
-    <!-- =============================================================== -->
-    <!-- Build -->
-    <!-- =============================================================== -->
     <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.5</version>
+            </plugin>
+        </plugins>
     </build>
 </project>

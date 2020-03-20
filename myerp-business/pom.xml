@@ -3,10 +3,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- =============================================================== -->
-    <!-- Project informations -->
-    <!-- =============================================================== -->
-    <!-- ===== Parent ===== -->
     <parent>
         <groupId>com.dummy.myerp</groupId>
         <artifactId>myerp</artifactId>
@@ -14,39 +10,14 @@
         <relativePath>..</relativePath>
     </parent>
 
-    <!-- ===== Maven ===== -->
     <artifactId>myerp-business</artifactId>
 
-    <!-- ===== General information ===== -->
     <name>${project.artifactId}</name>
 
-
-    <!-- =============================================================== -->
-    <!-- Distrubution management -->
-    <!-- =============================================================== -->
-    <!--    <distributionManagement>-->
-    <!--        <site>-->
-    <!--            <id>site</id>-->
-    <!--            <name>site-doc</name>-->
-    <!--            <url>${basedir}/../myerp-business/target/site/</url>-->
-    <!--        </site>-->
-    <!--    </distributionManagement>-->
-
-
-    <!-- =============================================================== -->
-    <!-- Properties -->
-    <!-- =============================================================== -->
     <properties>
-
-        <sonar.coverage.jacoco.xmlReportPaths>${basedir}/../${aggregate.report.dir}
-        </sonar.coverage.jacoco.xmlReportPaths>
-
+        <sonar.coverage.jacoco.xmlReportPaths>${basedir}/../${aggregate.report.dir}</sonar.coverage.jacoco.xmlReportPaths>
     </properties>
 
-
-    <!-- =============================================================== -->
-    <!-- Dependencies -->
-    <!-- =============================================================== -->
     <dependencies>
         <!-- ===== Modules ===== -->
         <dependency>
@@ -70,14 +41,12 @@
             <artifactId>spring-test</artifactId>
         </dependency>
 
-
         <!-- ===== JSR 303 - Bean validation ===== -->
         <!-- implementation -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
         </dependency>
-
 
         <!-- ========== Test Dependencies ========== -->
         <dependency>
@@ -101,10 +70,6 @@
         </dependency>
     </dependencies>
 
-
-    <!-- =============================================================== -->
-    <!-- Profiles -->
-    <!-- =============================================================== -->
     <profiles>
         <!-- Profile utilisé pour lancer les tests d'intégration de la couche Business -->
         <profile>
@@ -142,4 +107,14 @@
             </build>
         </profile>
     </profiles>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.5</version>
+            </plugin>
+        </plugins>
+    </build>
 </project>

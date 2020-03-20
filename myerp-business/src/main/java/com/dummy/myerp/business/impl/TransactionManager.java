@@ -10,77 +10,58 @@ import org.springframework.transaction.support.DefaultTransactionDefinition;
  */
 public class TransactionManager {
 
-    // ==================== Attributs Static ====================
-    /** PlatformTransactionManager pour le DataSource MyERP */
-    private static PlatformTransactionManager transactionManager;
+	private static final TransactionManager INSTANCE = new TransactionManager();
+	private static PlatformTransactionManager platformTransactionManager;
 
+	protected TransactionManager() {
+		super();
+	}
 
-    // ==================== Constructeurs ====================
-    /** Instance unique de la classe (design pattern Singleton) */
-    private static final TransactionManager INSTANCE = new TransactionManager();
-    /**
-     * Renvoie l'instance unique de la classe (design pattern Singleton).
-     *
-     * @return {@link TransactionManager}
-     */
-    public static TransactionManager getInstance() {
-        return TransactionManager.INSTANCE;
-    }
-    /**
-     * Renvoie l'instance unique de la classe (design pattern Singleton).
-     *
-     * @param transactionManager -
-     * @return {@link TransactionManager}
-     */
-    public static TransactionManager getInstance(PlatformTransactionManager transactionManager) {
-        TransactionManager.transactionManager = transactionManager;
-        return TransactionManager.INSTANCE;
-    }
-    /**
-     * Constructeur.
-     */
-    protected TransactionManager() {
-        super();
-    }
+	public static TransactionManager getInstance() {
+		return TransactionManager.INSTANCE;
+	}
 
+	public static TransactionManager getInstance(PlatformTransactionManager transactionManager) {
+		TransactionManager.platformTransactionManager = transactionManager;
+		return TransactionManager.INSTANCE;
+	}
 
-    // ==================== Méthodes ====================
-    /**
-     * Démarre une transaction sur le DataSource MyERP
-     *
-     * @return TransactionStatus à passer aux méthodes :
-     *      <ul>
-     *          <li>{@link #commitMyERP(TransactionStatus)}</li>
-     *              <li>{@link #rollbackMyERP(TransactionStatus)}</li>
-     *      </ul>
-     */
-    public TransactionStatus beginTransactionMyERP() {
-        DefaultTransactionDefinition defaultTransactionDefinition = new DefaultTransactionDefinition();
-        defaultTransactionDefinition.setName("Transaction_txManagerMyERP");
-        defaultTransactionDefinition.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
+	/**
+	 * Démarre une transaction sur le DataSource MyERP
+	 *
+	 * @return TransactionStatus à passer aux méthodes :
+	 * <ul>
+	 *     <li>{@link #commitMyERP(TransactionStatus)}</li>
+	 *         <li>{@link #rollbackMyERP(TransactionStatus)}</li>
+	 * </ul>
+	 */
+	public TransactionStatus beginTransactionMyERP() {
+		DefaultTransactionDefinition defaultTransactionDefinition = new DefaultTransactionDefinition();
+		defaultTransactionDefinition.setName("Transaction_txManagerMyERP");
+		defaultTransactionDefinition.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
 
-        return transactionManager.getTransaction(defaultTransactionDefinition);
-    }
+		return platformTransactionManager.getTransaction(defaultTransactionDefinition);
+	}
 
-    /**
-     * Commit la transaction sur le DataSource MyERP
-     *
-     * @param pTStatus retrouné par la méthode {@link #beginTransactionMyERP()}
-     */
-    public void commitMyERP(TransactionStatus pTStatus) {
-        if (pTStatus != null) {
-            transactionManager.commit(pTStatus);
-        }
-    }
+	/**
+	 * Commit la transaction sur le DataSource MyERP
+	 *
+	 * @param pTStatus retrouné par la méthode {@link #beginTransactionMyERP()}
+	 */
+	public void commitMyERP(TransactionStatus pTStatus) {
+		if (pTStatus != null) {
+			platformTransactionManager.commit(pTStatus);
+		}
+	}
 
-    /**
-     * Rollback la transaction sur le DataSource MyERP
-     *
-     * @param pTStatus retrouné par la méthode {@link #beginTransactionMyERP()}
-     */
-    public void rollbackMyERP(TransactionStatus pTStatus) {
-        if (pTStatus != null) {
-            transactionManager.rollback(pTStatus);
-        }
-    }
+	/**
+	 * Rollback la transaction sur le DataSource MyERP
+	 *
+	 * @param pTStatus retrouné par la méthode {@link #beginTransactionMyERP()}
+	 */
+	public void rollbackMyERP(TransactionStatus pTStatus) {
+		if (pTStatus != null) {
+			platformTransactionManager.rollback(pTStatus);
+		}
+	}
 }

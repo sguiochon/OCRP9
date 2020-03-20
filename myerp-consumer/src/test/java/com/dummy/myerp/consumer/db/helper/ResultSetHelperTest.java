@@ -45,6 +45,7 @@ public class ResultSetHelperTest {
 		Date date = ResultSetHelper.getDate(resultSetMock, "dummy column name");
 
 		// Assert
+		Assert.assertNotNull("Date conversion - date not null", date);
 		calendar.setTime(date);
 		Assert.assertEquals("Date conversion - no hours", 0, calendar.get(Calendar.HOUR));
 		Assert.assertEquals("Date conversion - no minutes", 0, calendar.get(Calendar.MINUTE));

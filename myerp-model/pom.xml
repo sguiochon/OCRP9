@@ -14,22 +14,6 @@
 
     <name>${project.artifactId}</name>
 
-<!--        <distributionManagement>-->
-<!--            <site>-->
-<!--                <id>site</id>-->
-<!--                <name>site-doc</name>-->
-<!--                <url>file://${basedir}/../target/site-doc/${project.artifactId}/</url>-->
-<!--            </site>-->
-<!--        </distributionManagement>-->
-
-<!--    <distributionManagement>-->
-<!--        <site>-->
-<!--            <id>site</id>-->
-<!--            <name>site-doc</name>-->
-<!--            <url>${basedir}/../myerp-model/target/site/</url>-->
-<!--        </site>-->
-<!--    </distributionManagement>-->
-
     <properties>
         <sonar.coverage.jacoco.xmlReportPaths>${basedir}/../${aggregate.report.dir}</sonar.coverage.jacoco.xmlReportPaths>
     </properties>
@@ -62,8 +46,6 @@
             <version>3.9</version>
         </dependency>
 
-
-
         <!-- ===== JSR 303 - Bean validation ===== -->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -74,5 +56,12 @@
     </dependencies>
 
     <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.5</version>
+            </plugin>
+        </plugins>
     </build>
 </project>

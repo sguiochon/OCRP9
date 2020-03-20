@@ -2,10 +2,7 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <!-- =============================================================== -->
-    <!-- Project informations -->
-    <!-- =============================================================== -->
-    <!-- ===== Parent ===== -->
+
     <parent>
         <groupId>com.dummy.myerp</groupId>
         <artifactId>myerp</artifactId>
@@ -13,36 +10,14 @@
         <relativePath>..</relativePath>
     </parent>
 
-    <!-- ===== Maven ===== -->
     <artifactId>myerp-consumer</artifactId>
 
-    <!-- ===== General information ===== -->
     <name>${project.artifactId}</name>
 
-
-    <!-- =============================================================== -->
-    <!-- Distrubution management -->
-    <!-- =============================================================== -->
-<!--    <distributionManagement>-->
-<!--        <site>-->
-<!--            <id>site</id>-->
-<!--            <name>site-doc</name>-->
-<!--            <url>${basedir}/../myerp-consumer/target/site/</url>-->
-<!--        </site>-->
-<!--    </distributionManagement>-->
-
-
-    <!-- =============================================================== -->
-    <!-- Properties -->
-    <!-- =============================================================== -->
     <properties>
         <sonar.coverage.jacoco.xmlReportPaths>${basedir}/../${aggregate.report.dir}</sonar.coverage.jacoco.xmlReportPaths>
     </properties>
 
-
-    <!-- =============================================================== -->
-    <!-- Dependencies -->
-    <!-- =============================================================== -->
     <dependencies>
         <!-- ===== Modules ===== -->
         <dependency>
@@ -71,7 +46,6 @@
             <scope>test</scope>
         </dependency>
 
-
         <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
@@ -85,8 +59,6 @@
             <artifactId>log4j-core</artifactId>
             <version>2.13.1</version>
         </dependency>
-
-
 
         <!-- ========== Test Dependencies ========== -->
         <dependency>
@@ -134,10 +106,6 @@
         </dependency>
     </dependencies>
 
-
-    <!-- =============================================================== -->
-    <!-- Profiles -->
-    <!-- =============================================================== -->
     <profiles>
         <!-- Profile utilisé pour lancer les tests d'intégration de la couche Consumer -->
         <profile>
@@ -163,7 +131,6 @@
                             </execution>
                         </executions>
                     </plugin>
-
                     <plugin>
                         <artifactId>maven-surefire-plugin</artifactId>
                         <version>2.22.0</version>
@@ -173,7 +140,6 @@
                             </includes>
                         </configuration>
                     </plugin>
-
                 </plugins>
                 <testResources>
                     <testResource>
@@ -187,10 +153,13 @@
         </profile>
     </profiles>
 
-
-    <!-- =============================================================== -->
-    <!-- Build -->
-    <!-- =============================================================== -->
     <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.5</version>
+            </plugin>
+        </plugins>
     </build>
 </project>

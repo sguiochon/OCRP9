@@ -34,10 +34,6 @@
         </site>
     </distributionManagement>
 
-
-    <!-- =============================================================== -->
-    <!-- Properties -->
-    <!-- =============================================================== -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
@@ -53,10 +49,6 @@
         <aggregate.report.dir>module-jacoco-aggregate/target/site/jacoco-aggregate/jacoco.xml</aggregate.report.dir>
     </properties>
 
-
-    <!-- =============================================================== -->
-    <!-- Modules -->
-    <!-- =============================================================== -->
     <modules>
         <module>myerp-technical</module>
         <module>myerp-model</module>
@@ -65,10 +57,6 @@
         <module>module-jacoco-aggregate</module>
     </modules>
 
-
-    <!-- =============================================================== -->
-    <!-- Profiles -->
-    <!-- =============================================================== -->
     <profiles>
         <!-- Profile utilisé par le plugin m2e d'Eclipse -->
         <profile>
@@ -94,10 +82,6 @@
         </profile>
     </profiles>
 
-
-    <!-- =============================================================== -->
-    <!-- Repositories -->
-    <!-- =============================================================== -->
     <repositories>
         <!-- ===== Project local repository ===== -->
         <repository>
@@ -110,10 +94,6 @@
         </repository>
     </repositories>
 
-
-    <!-- =============================================================== -->
-    <!-- Dependency managment -->
-    <!-- =============================================================== -->
     <dependencyManagement>
         <dependencies>
             <!-- ========== Modules ========== -->
@@ -268,21 +248,10 @@
         </dependencies>
     </dependencyManagement>
 
-
-    <!-- =============================================================== -->
-    <!-- Dependencies -->
-    <!-- =============================================================== -->
     <dependencies>
     </dependencies>
 
-
-    <!-- =============================================================== -->
-    <!-- Build -->
-    <!-- =============================================================== -->
     <build>
-        <!-- =============================================================== -->
-        <!-- pluginManagement -->
-        <!-- =============================================================== -->
         <pluginManagement>
             <plugins>
                 <!-- ===== Java compilation ===== -->
@@ -435,28 +404,6 @@
                                 <goal>prepare-agent</goal>
                             </goals>
                         </execution>
-<!--                        <execution>-->
-<!--                            <id>jacoco-report</id>-->
-<!--                            <goals>-->
-<!--                                <goal>report</goal>-->
-<!--                            </goals>-->
-<!--                        </execution>-->
-<!--                        <execution>-->
-<!--                            <id>merge</id>-->
-<!--                            <goals>-->
-<!--                                <goal>merge</goal>-->
-<!--                            </goals>-->
-<!--                            <configuration>-->
-<!--                                <fileSets>-->
-<!--                                    <fileSet implementation="org.apache.maven.shared.model.fileset.FileSet">-->
-<!--                                        <directory>${project.basedir}</directory>-->
-<!--                                        <includes>-->
-<!--                                            <include>**/*.exec</include>-->
-<!--                                        </includes>-->
-<!--                                    </fileSet>-->
-<!--                                </fileSets>-->
-<!--                            </configuration>-->
-<!--                        </execution>-->
                     </executions>
                 </plugin>
 
@@ -613,19 +560,6 @@
                             <report>report</report>
                         </reports>
                     </reportSet>
-
-<!--                    <reportSet>-->
-<!--                        <id>aggregate</id>-->
-<!--                        <inherited>false</inherited>&lt;!&ndash; don't run aggregate in child modules &ndash;&gt;-->
-<!--                        <configuration>-->
-<!--                            &lt;!&ndash; execution will only scan the outputFile. &ndash;&gt;-->
-<!--                            <skipExec>true</skipExec>-->
-<!--                        </configuration>-->
-<!--                        <reports>-->
-<!--                            &lt;!&ndash; select non-aggregate reports &ndash;&gt;-->
-<!--                            <report>report</report>-->
-<!--                        </reports>-->
-<!--                    </reportSet>-->
                 </reportSets>
             </plugin>
 

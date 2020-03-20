@@ -13,11 +13,8 @@ public class CompteComptableDaoCache {
 
 	private List<CompteComptable> listCompteComptable;
 
-	public CompteComptableDaoCache() {
-	}
-
 	/**
-	 * Gets by numero.
+	 * Retourne un CompteComptable par son numero en le recherchant dans un cache pour améliorer les performances.
 	 *
 	 * @param pNumero the numero
 	 * @return {@link CompteComptable} ou {@code null}
@@ -26,7 +23,6 @@ public class CompteComptableDaoCache {
 		if (listCompteComptable == null) {
 			listCompteComptable = ConsumerHelper.getDaoProxy().getComptabiliteDao().getListCompteComptable();
 		}
-		CompteComptable vRetour = CompteComptable.getByNumero(listCompteComptable, pNumero);
-		return vRetour;
+		return CompteComptable.getByNumero(listCompteComptable, pNumero);
 	}
 }
