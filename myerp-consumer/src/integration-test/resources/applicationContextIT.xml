@@ -43,21 +43,21 @@
 
 
     <!-- ==================== Databases ==================== -->
-<!--    <bean id="dataSourceMYERP" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
-<!--        <constructor-arg value="javax.sql.DataSource"/>-->
-<!--        <property name="driverClassName" value="org.postgresql.Driver"/>-->
-<!--        <property name="url" value="jdbc:postgresql://127.0.0.1:5432/travis_ci_test"/>-->
-<!--        <property name="username" value="postgres"/>-->
-<!--        <property name="password" value=""/>-->
-<!--    </bean>-->
-
     <bean id="dataSourceMYERP" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <constructor-arg value="javax.sql.DataSource"/>
         <property name="driverClassName" value="org.postgresql.Driver"/>
-        <property name="url" value="jdbc:postgresql://127.0.0.1:5432/postgres"/>
+        <property name="url" value="jdbc:postgresql://127.0.0.1:5432/travis_ci_test"/>
         <property name="username" value="postgres"/>
-        <property name="password" value="Antimoine67!"/>
+        <property name="password" value=""/>
     </bean>
+
+<!--    <bean id="dataSourceMYERP" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+<!--        <constructor-arg value="javax.sql.DataSource"/>-->
+<!--        <property name="driverClassName" value="org.postgresql.Driver"/>-->
+<!--        <property name="url" value="jdbc:postgresql://127.0.0.1:5432/postgres"/>-->
+<!--        <property name="username" value="postgres"/>-->
+<!--        <property name="password" value="Antimoine67!"/>-->
+<!--    </bean>-->
 
     <!-- ========== SQL statements ========== -->
     <import resource="sqlContext.xml"/>
