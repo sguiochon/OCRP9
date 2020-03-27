@@ -11,8 +11,6 @@ public class FunctionalException extends Exception {
     /** serialVersionUID */
     private static final long serialVersionUID = 1L;
 
-
-    // ==================== Constructeurs ====================
     /**
      * Constructeur.
      *
@@ -42,14 +40,15 @@ public class FunctionalException extends Exception {
     }
 
     public static String buildMessageIfCausedByConstraintViolationException(Throwable throwable){
-        StringBuilder message = new StringBuilder();
+        StringBuilder message = new StringBuilder("(");
         if (throwable instanceof ConstraintViolationException){
             ConstraintViolationException constraintViolationException = (ConstraintViolationException) throwable;
             message.append(constraintViolationException.getMessage());
             for (ConstraintViolation<?> o : constraintViolationException.getConstraintViolations()){
-                message.append(o.getMessage());
+                message.append("[").append(o.getMessage()).append("]");
             }
         }
+        message.append(")");
         return message.toString();
     }
 }
