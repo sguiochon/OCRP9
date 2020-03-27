@@ -5,6 +5,7 @@ import java.util.List;
 import com.dummy.myerp.model.bean.comptabilite.CompteComptable;
 import com.dummy.myerp.model.bean.comptabilite.EcritureComptable;
 import com.dummy.myerp.model.bean.comptabilite.JournalComptable;
+import com.dummy.myerp.model.bean.comptabilite.SequenceEcritureComptable;
 import com.dummy.myerp.technical.exception.NotFoundException;
 
 
@@ -13,8 +14,14 @@ import com.dummy.myerp.technical.exception.NotFoundException;
  */
 public interface ComptabiliteDao {
 
+    public Integer getDerniereValeurSequenceEcriture(String journalCode, Integer annee);
+
+    public void insertSequenceEcriture(SequenceEcritureComptable sequenceEcritureComptable);
+
+    public void updateSequenceEcriture(SequenceEcritureComptable sequenceEcritureComptable);
+
     /**
-     * Renvoie la liste des Comptes Comptables
+     * Renvoie la liste de tous les Comptes Comptables
      * @return {@link List}
      */
     List<CompteComptable> getListCompteComptable();

@@ -5,35 +5,17 @@ import com.dummy.myerp.business.contrat.manager.ComptabiliteManager;
 import com.dummy.myerp.business.impl.manager.ComptabiliteManagerImpl;
 import com.dummy.myerp.consumer.dao.contrat.DaoProxy;
 
-
 /**
  * <p>Implémentation du Proxy d'accès à la couche Business.</p>
  */
 public class BusinessProxyImpl implements BusinessProxy {
 
-	// ==================== Attributs Static ====================
-	/**
-	 * Instance unique de la classe (design pattern Singleton)
-	 */
 	private static final BusinessProxyImpl INSTANCE = new BusinessProxyImpl();
 
-
-	// ==================== Attributs ====================
-	/**
-	 * Le Proxy d'accès à la couche Consumer-DAO
-	 */
 	private static DaoProxy daoProxy;
 
-
-	// ==================== Constructeurs ====================
-	/**
-	 * The Comptabilite manager.
-	 */
 	private ComptabiliteManager comptabiliteManager = new ComptabiliteManagerImpl();
 
-	/**
-	 * Constructeur.
-	 */
 	protected BusinessProxyImpl() {
 		super();
 	}
@@ -64,7 +46,6 @@ public class BusinessProxyImpl implements BusinessProxy {
 		return BusinessProxyImpl.INSTANCE;
 	}
 
-	// ==================== Getters/Setters ====================
 	@Override
 	public ComptabiliteManager getComptabiliteManager() {
 		return comptabiliteManager;

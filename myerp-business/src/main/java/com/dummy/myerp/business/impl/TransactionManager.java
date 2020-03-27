@@ -39,29 +39,28 @@ public class TransactionManager {
 		DefaultTransactionDefinition defaultTransactionDefinition = new DefaultTransactionDefinition();
 		defaultTransactionDefinition.setName("Transaction_txManagerMyERP");
 		defaultTransactionDefinition.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
-
 		return platformTransactionManager.getTransaction(defaultTransactionDefinition);
 	}
 
 	/**
 	 * Commit la transaction sur le DataSource MyERP
 	 *
-	 * @param pTStatus retrouné par la méthode {@link #beginTransactionMyERP()}
+	 * @param transactionStatus retrouné par la méthode {@link #beginTransactionMyERP()}
 	 */
-	public void commitMyERP(TransactionStatus pTStatus) {
-		if (pTStatus != null) {
-			platformTransactionManager.commit(pTStatus);
+	public void commitMyERP(TransactionStatus transactionStatus) {
+		if (transactionStatus != null) {
+			platformTransactionManager.commit(transactionStatus);
 		}
 	}
 
 	/**
 	 * Rollback la transaction sur le DataSource MyERP
 	 *
-	 * @param pTStatus retrouné par la méthode {@link #beginTransactionMyERP()}
+	 * @param transactionStatus retrouné par la méthode {@link #beginTransactionMyERP()}
 	 */
-	public void rollbackMyERP(TransactionStatus pTStatus) {
-		if (pTStatus != null) {
-			platformTransactionManager.rollback(pTStatus);
+	public void rollbackMyERP(TransactionStatus transactionStatus) {
+		if (transactionStatus != null) {
+			platformTransactionManager.rollback(transactionStatus);
 		}
 	}
 }

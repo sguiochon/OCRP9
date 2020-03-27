@@ -8,8 +8,6 @@ import com.dummy.myerp.business.contrat.manager.ComptabiliteManager;
  */
 public interface BusinessProxy {
 
-    // ==================== Managers ====================
-
     /**
      * Renvoie le manager du package Comptabilite.
      *

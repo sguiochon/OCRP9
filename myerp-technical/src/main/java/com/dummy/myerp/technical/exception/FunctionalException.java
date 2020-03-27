@@ -1,5 +1,8 @@
 package com.dummy.myerp.technical.exception;
 
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
+
 /**
  * Classe des Exceptions Fonctionnelles
  */
@@ -35,6 +38,18 @@ public class FunctionalException extends Exception {
      * @param pCause -
      */
     public FunctionalException(String pMessage, Throwable pCause) {
-        super(pMessage, pCause);
+        super(pMessage + buildMessageIfCausedByConstraintViolationException(pCause), pCause);
+    }
+
+    public static String buildMessageIfCausedByConstraintViolationException(Throwable throwable){
+        StringBuilder message = new StringBuilder();
+        if (throwable instanceof ConstraintViolationException){
+            ConstraintViolationException constraintViolationException = (ConstraintViolationException) throwable;
+            message.append(constraintViolationException.getMessage());
+            for (ConstraintViolation<?> o : constraintViolationException.getConstraintViolations()){
+                message.append(o.getMessage());
+            }
+        }
+        return message.toString();
     }
 }

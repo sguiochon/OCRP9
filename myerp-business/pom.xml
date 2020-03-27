@@ -73,7 +73,7 @@
     <profiles>
         <!-- Profile utilisé pour lancer les tests d'intégration de la couche Business -->
         <profile>
-            <id>test-business</id>
+            <id>integration-test-business</id>
             <build>
                 <plugins>
                     <!-- Ajout du répertoire src/test-business/java en tant que source de test du module -->
@@ -89,11 +89,20 @@
                                 </goals>
                                 <configuration>
                                     <sources>
-                                        <source>src/test-business/java</source>
+                                        <source>src/integration-test/java</source>
                                     </sources>
                                 </configuration>
                             </execution>
                         </executions>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.22.0</version>
+                        <configuration>
+                            <includes>
+                                <include>**/*IT</include>
+                            </includes>
+                        </configuration>
                     </plugin>
                 </plugins>
                 <testResources>
@@ -101,7 +110,7 @@
                         <directory>src/test/resources</directory>
                     </testResource>
                     <testResource>
-                        <directory>src/test-business/resources</directory>
+                        <directory>src/integration-test/resources</directory>
                     </testResource>
                 </testResources>
             </build>

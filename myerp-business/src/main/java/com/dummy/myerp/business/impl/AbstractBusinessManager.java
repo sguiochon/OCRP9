@@ -14,13 +14,11 @@ import javax.validation.ValidatorFactory;
  */
 public abstract class AbstractBusinessManager {
 
-
 	private static BusinessProxy businessProxy;
 
 	private static DaoProxy daoProxy;
 
 	private static TransactionManager transactionManager;
-
 
 	/**
 	 * Méthode de configuration de la classe
@@ -37,21 +35,17 @@ public abstract class AbstractBusinessManager {
 		transactionManager = pTransactionManager;
 	}
 
-
 	protected BusinessProxy getBusinessProxy() {
 		return businessProxy;
 	}
-
 
 	protected DaoProxy getDaoProxy() {
 		return daoProxy;
 	}
 
-
 	protected TransactionManager getTransactionManager() {
 		return transactionManager;
 	}
-
 
 	/**
 	 * Renvoie un {@link Validator} de contraintes

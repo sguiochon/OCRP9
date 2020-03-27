@@ -1,4 +1,4 @@
-package com.dummy.myerp.testbusiness.business;
+package com.dummy.myerp.business;
 
 import com.dummy.myerp.business.contrat.BusinessProxy;
 import org.junit.Before;
@@ -10,7 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(locations= "/com/dummy/myerp/business/applicationContext.xml")
-public class BusinessProxyImplTest {
+public class BusinessProxyImplIT {
 
 	@Autowired
 	BusinessProxy businessProxy;

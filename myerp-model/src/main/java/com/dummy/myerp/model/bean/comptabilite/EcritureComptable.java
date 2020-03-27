@@ -19,17 +19,17 @@ import java.util.List;
 public class EcritureComptable {
 
 	@Valid
-	@Size(min = 2)
+	@Size(min = 2, message = "Au moins 2 lignes d'ecriture sont requises")
 	private final List<LigneEcritureComptable> listLigneEcriture = new ArrayList<>();
 	private Integer id;
-	@NotNull
+	@NotNull(message = "Un journal doit être associé à l'ecriture")
 	private JournalComptable journal;
-	@Pattern(regexp = "[a-zA-Z0-9]]{1,5}-\\d{4}/\\d{5}")
+	@Pattern(regexp = "[a-zA-Z0-9]{1,5}-\\d{4}/\\d{5}", message = "Le champ 'reference' ne respecte pas le format attendu. {javax.validation.constraints.Pattern.message}")
 	private String reference;
-	@NotNull
+	@NotNull(message = "La date d'écriture est obligatoire")
 	private Date date;
 	@NotNull
-	@Size(min = 1, max = 200)
+	@Size(min = 1, max = 200, message = "Le libelle doit contenir entre 1 et 200 caractères")
 	private String libelle;
 
 	public Integer getId() {
