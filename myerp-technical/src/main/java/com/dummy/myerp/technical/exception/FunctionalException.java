@@ -40,15 +40,16 @@ public class FunctionalException extends Exception {
     }
 
     public static String buildMessageIfCausedByConstraintViolationException(Throwable throwable){
-        StringBuilder message = new StringBuilder("(");
         if (throwable instanceof ConstraintViolationException){
+            StringBuilder message = new StringBuilder("(");
             ConstraintViolationException constraintViolationException = (ConstraintViolationException) throwable;
             message.append(constraintViolationException.getMessage());
             for (ConstraintViolation<?> o : constraintViolationException.getConstraintViolations()){
                 message.append("[").append(o.getMessage()).append("]");
             }
+            message.append(")");
+            return message.toString();
         }
-        message.append(")");
-        return message.toString();
+        return "";
     }
 }
